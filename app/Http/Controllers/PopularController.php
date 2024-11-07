@@ -9,7 +9,6 @@ class PopularController extends Controller
 {
     public function popular()
     {
-        // Eager load 'category' and 'course' relationships
         $popularArticles = Article::with('category', 'course')
                                 ->orderBy('views', 'desc')
                                 ->paginate(3);
@@ -19,7 +18,6 @@ class PopularController extends Controller
 
     public function paginate($page)
     {
-        // Eager load 'category' and 'course' relationships
         $popularArticles = Article::with('category', 'course')
                                 ->orderBy('views', 'desc')
                                 ->paginate(3, ['*'], 'page', $page);
